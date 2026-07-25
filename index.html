@@ -4,6 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://formspree.io; connect-src 'self' https://formspree.io;">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <title>Ayman Salman - Portfolio Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap"
         rel="stylesheet">
@@ -11,9 +17,6 @@
 </head>
 
 <body>
-    <!-- Nouveau Curseur Inversé -->
-    <div class="cursor"></div>
-
     <nav class="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">AS.</a>
@@ -35,8 +38,6 @@
         </div>
     </nav>
     <header class="hero parallax" id="home">
-        <!-- Arrière-plan particules -->
-        <canvas id="particles-bg"></canvas>
         <div class="hero-content">
             <h1 class="typewriter-text" data-text="Ayman Salman">Ayman Salman</h1>
             <p class="subtitle">Étudiant en Informatique & Développeur</p>
@@ -359,215 +360,6 @@
 
     <a href="#home" class="back-to-top" id="backToTop" aria-label="Retour en haut">&#8593;</a>
 
-    <script>
-        // =========================================
-        // 1. Bouton Retour en haut
-        // =========================================
-        const backToTop = document.getElementById("backToTop");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 400) {
-                backToTop.classList.add("show");
-            } else {
-                backToTop.classList.remove("show");
-            }
-        });
-
-        // =========================================
-        // 2. Animations d'apparition (Scroll Reveal)
-        // =========================================
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Sélectionner les éléments à animer
-        const elementsToReveal = document.querySelectorAll('.section-title, .about-text, .skills, .setup-gear, .timeline-item, .project-card, .wip-card, .contact-info, .contact-form');
-        elementsToReveal.forEach(el => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
-
-        // =========================================
-        // 3. Nouveau Curseur (Effet d'inversion des couleurs)
-        // =========================================
-        const cursor = document.querySelector('.cursor');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        document.querySelectorAll('a, button, .project-card, .menu-toggle-label').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-        });
-
-        // =========================================
-        // 4. Effet 3D Tilt sur les cartes de projet (Corrigé)
-        // =========================================
-        const cards = document.querySelectorAll('.project-card');
-        cards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                // Désactive la transition CSS pour que la carte suive la souris instantanément sans lag
-                card.style.transition = 'none';
-            });
-
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                // Rotation douce
-                const rotateX = ((y - centerY) / centerY) * -8;
-                const rotateY = ((x - centerX) / centerX) * 8;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                // Réactive une transition douce pour que la carte revienne à sa place
-                card.style.transition = 'transform 0.5s ease, box-shadow 0.5s ease';
-                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-            });
-        });
-
-        // =========================================
-        // 5. Grille Cybernétique 3D (Hero) - 100% Optimisée !
-        // =========================================
-        const canvas = document.getElementById('particles-bg');
-        const ctx = canvas.getContext('2d');
-        let cw = canvas.width = window.innerWidth;
-        let ch = canvas.height = window.innerHeight;
-
-        // Pré-calcul du dégradé (Évite les fuites de mémoire et les lags)
-        let gridGradient;
-        function updateGradient() {
-            gridGradient = ctx.createLinearGradient(0, ch / 2 - 100, 0, ch);
-            gridGradient.addColorStop(0, 'rgba(229, 9, 20, 0)');    // Invisible au loin
-            gridGradient.addColorStop(0.3, 'rgba(229, 9, 20, 0.1)');
-            gridGradient.addColorStop(1, 'rgba(229, 9, 20, 0.6)');  // Bien rouge et visible de près
-        }
-        updateGradient();
-
-        let resizeTimeout;
-        let lastWidth = window.innerWidth;
-
-        window.addEventListener('resize', () => {
-            // Ignore les redimensionnements verticaux (barre d'URL mobile) pour éviter les lags
-            if (window.innerWidth === lastWidth) return;
-            lastWidth = window.innerWidth;
-
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                cw = canvas.width = window.innerWidth;
-                ch = canvas.height = window.innerHeight;
-                updateGradient(); // Met à jour le dégradé uniquement si la taille change
-            }, 250);
-        });
-
-        let time = 0;
-        const linesX = 35; // Largeur de la grille (lignes verticales)
-        const linesZ = 45; // Profondeur de la grille (lignes horizontales)
-        const fov = 250;   // Champ de vision (perspective)
-
-        let isAnimating = true;
-        let animationId;
-
-        function animateGrid() {
-            if (!isAnimating) return;
-
-            ctx.clearRect(0, 0, cw, ch);
-            time += 0.04;
-
-            ctx.strokeStyle = gridGradient;
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-
-            // --- 1. Dessin des Lignes Horizontales ---
-            for (let z = 0; z < linesZ; z++) {
-                // Décalage temporel pour faire "avancer" la grille vers nous
-                let actualZ = z - (time % 1);
-                if (actualZ < 0) actualZ += linesZ;
-                let worldZ = (linesZ - actualZ) * 40;
-
-                for (let x = -linesX; x <= linesX; x++) {
-                    let worldX = x * 80;
-                    let worldY = Math.sin(x * 0.15 + time) * 35 + Math.cos(worldZ * 0.02 + time) * 35 + 250;
-
-                    let scale = fov / (fov + worldZ);
-                    let screenX = cw / 2 + worldX * scale;
-                    let screenY = ch / 2 + worldY * scale;
-
-                    if (x === -linesX) ctx.moveTo(screenX, screenY);
-                    else ctx.lineTo(screenX, screenY);
-                }
-            }
-
-            // --- 2. Dessin des Lignes Verticales ---
-            for (let x = -linesX; x <= linesX; x++) {
-                for (let z = 0; z < linesZ; z++) {
-                    // CORRECTION DU BUG : Pas de décalage (time % 1) sur l'axe Z pour les lignes verticales,
-                    // sinon elles dessinent des traits géants d'avant en arrière ce qui fait saturer le processeur graphique (Lag de 3 secondes).
-                    let worldZ = (linesZ - z) * 40;
-
-                    let worldX = x * 80;
-                    let worldY = Math.sin(x * 0.15 + time) * 35 + Math.cos(worldZ * 0.02 + time) * 35 + 250;
-
-                    let scale = fov / (fov + worldZ);
-                    let screenX = cw / 2 + worldX * scale;
-                    let screenY = ch / 2 + worldY * scale;
-
-                    if (z === 0) ctx.moveTo(screenX, screenY);
-                    else ctx.lineTo(screenX, screenY);
-                }
-            }
-
-            ctx.stroke();
-            animationId = requestAnimationFrame(animateGrid);
-        }
-
-        // Optimisation majeure : Ne calculer la grille QUE quand on est tout en haut du site
-        const heroSection = document.getElementById('home');
-        if (heroSection) {
-            const heroObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (!isAnimating) {
-                            isAnimating = true;
-                            animateGrid();
-                        }
-                    } else {
-                        isAnimating = false;
-                        cancelAnimationFrame(animationId);
-                    }
-                });
-            }, { threshold: 0 });
-            heroObserver.observe(heroSection);
-        }
-
-        animateGrid();
-
-        // =========================================
-        // 6. Fermeture automatique du menu mobile
-        // =========================================
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuToggle && menuToggle.checked) {
-                    menuToggle.checked = false;
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
