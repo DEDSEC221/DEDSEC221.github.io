@@ -430,6 +430,30 @@ body {
     transform: scale(1.08);
 }
 
+.project-1 {
+    background-image: url('img/aynotech.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000000; /* Noir pur pour uniformiser parfaitement l'image sans bordures visibles */
+}
+
+.project-2 {
+    background-image: url('img/smartfact.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff; /* Fond blanc pour se fondre avec l'image */
+}
+
+.project-3 {
+    background-image: url('img/univportal.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #0a0a0a; /* Fond très sombre pour correspondre au logo Univ Portal */
+}
+
 .card-content {
     padding: 2rem;
     flex-grow: 1;
