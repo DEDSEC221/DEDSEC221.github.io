@@ -282,18 +282,17 @@
                     <h3>Discutons de votre prochain projet !</h3>
                     <p>Je suis actuellement à la recherche de nouvelles opportunités. Que ce soit pour un projet, une
                         question ou simplement pour échanger, n'hésitez pas à m'envoyer un message.</p>
-                    <a href="mailto:salmanayman38@gmail.com" class="contact-email">ayman.salman@email.com</a>
+                    <a href="mailto:salmanayman38@gmail.com" class="contact-email">salmanayman38@gmail.com</a>
                 </div>
-                <form class="contact-form" action="#" method="POST"
-                    onsubmit="event.preventDefault(); alert('Ce formulaire est une démonstration CSS pure.');">
+                <form class="contact-form" action="https://formspree.io/f/xykrbobk" method="POST">
                     <div class="form-group">
-                        <input type="text" placeholder="Votre Nom" required>
+                        <input type="text" name="nom" placeholder="Votre Nom" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Votre Email" required>
+                        <input type="email" name="email" placeholder="Votre Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Votre Message" rows="5" required></textarea>
+                        <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="cta-button">Envoyer le message</button>
                 </form>
@@ -397,7 +396,7 @@
         // 3. Nouveau Curseur (Effet d'inversion des couleurs)
         // =========================================
         const cursor = document.querySelector('.cursor');
-        
+
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
@@ -424,11 +423,11 @@
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                
+
                 // Rotation douce
-                const rotateX = ((y - centerY) / centerY) * -8; 
+                const rotateX = ((y - centerY) / centerY) * -8;
                 const rotateY = ((x - centerX) / centerX) * 8;
-                
+
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
             });
 
@@ -452,17 +451,17 @@
         function updateGradient() {
             gridGradient = ctx.createLinearGradient(0, ch / 2 - 100, 0, ch);
             gridGradient.addColorStop(0, 'rgba(229, 9, 20, 0)');    // Invisible au loin
-            gridGradient.addColorStop(0.3, 'rgba(229, 9, 20, 0.1)'); 
+            gridGradient.addColorStop(0.3, 'rgba(229, 9, 20, 0.1)');
             gridGradient.addColorStop(1, 'rgba(229, 9, 20, 0.6)');  // Bien rouge et visible de près
         }
         updateGradient();
 
         let resizeTimeout;
         let lastWidth = window.innerWidth;
-        
+
         window.addEventListener('resize', () => {
             // Ignore les redimensionnements verticaux (barre d'URL mobile) pour éviter les lags
-            if (window.innerWidth === lastWidth) return; 
+            if (window.innerWidth === lastWidth) return;
             lastWidth = window.innerWidth;
 
             clearTimeout(resizeTimeout);
@@ -482,58 +481,58 @@
         let animationId;
 
         function animateGrid() {
-            if (!isAnimating) return; 
+            if (!isAnimating) return;
 
             ctx.clearRect(0, 0, cw, ch);
-            time += 0.04; 
-            
+            time += 0.04;
+
             ctx.strokeStyle = gridGradient;
             ctx.lineWidth = 1.5;
             ctx.beginPath();
-            
+
             // --- 1. Dessin des Lignes Horizontales ---
             for (let z = 0; z < linesZ; z++) {
                 // Décalage temporel pour faire "avancer" la grille vers nous
                 let actualZ = z - (time % 1);
                 if (actualZ < 0) actualZ += linesZ;
-                let worldZ = (linesZ - actualZ) * 40; 
-                
+                let worldZ = (linesZ - actualZ) * 40;
+
                 for (let x = -linesX; x <= linesX; x++) {
                     let worldX = x * 80;
-                    let worldY = Math.sin(x * 0.15 + time) * 35 + Math.cos(worldZ * 0.02 + time) * 35 + 250; 
-                    
+                    let worldY = Math.sin(x * 0.15 + time) * 35 + Math.cos(worldZ * 0.02 + time) * 35 + 250;
+
                     let scale = fov / (fov + worldZ);
                     let screenX = cw / 2 + worldX * scale;
-                    let screenY = ch / 2 + worldY * scale; 
-                    
+                    let screenY = ch / 2 + worldY * scale;
+
                     if (x === -linesX) ctx.moveTo(screenX, screenY);
                     else ctx.lineTo(screenX, screenY);
                 }
             }
-            
+
             // --- 2. Dessin des Lignes Verticales ---
             for (let x = -linesX; x <= linesX; x++) {
                 for (let z = 0; z < linesZ; z++) {
                     // CORRECTION DU BUG : Pas de décalage (time % 1) sur l'axe Z pour les lignes verticales,
                     // sinon elles dessinent des traits géants d'avant en arrière ce qui fait saturer le processeur graphique (Lag de 3 secondes).
                     let worldZ = (linesZ - z) * 40;
-                    
+
                     let worldX = x * 80;
                     let worldY = Math.sin(x * 0.15 + time) * 35 + Math.cos(worldZ * 0.02 + time) * 35 + 250;
-                    
+
                     let scale = fov / (fov + worldZ);
                     let screenX = cw / 2 + worldX * scale;
                     let screenY = ch / 2 + worldY * scale;
-                    
+
                     if (z === 0) ctx.moveTo(screenX, screenY);
                     else ctx.lineTo(screenX, screenY);
                 }
             }
-            
-            ctx.stroke(); 
+
+            ctx.stroke();
             animationId = requestAnimationFrame(animateGrid);
         }
-        
+
         // Optimisation majeure : Ne calculer la grille QUE quand on est tout en haut du site
         const heroSection = document.getElementById('home');
         if (heroSection) {
@@ -560,10 +559,10 @@
         // =========================================
         const menuToggle = document.getElementById('menu-toggle');
         const navLinks = document.querySelectorAll('.nav-links a');
-        
+
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if(menuToggle && menuToggle.checked) {
+                if (menuToggle && menuToggle.checked) {
                     menuToggle.checked = false;
                 }
             });
