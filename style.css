@@ -797,6 +797,31 @@ body {
     .wip-badge {
         right: -45px;
     }
+
+    /* Timeline Mobile */
+    .timeline::before {
+        left: 20px;
+        transform: none;
+    }
+    .timeline-item {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        left: 0;
+        padding-left: 3.5rem;
+        padding-right: 0;
+        text-align: left;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: 12px;
+        right: auto;
+    }
+    .timeline-content {
+        padding: 1.2rem;
+    }
 }
 
 /* =========================================
@@ -1103,16 +1128,18 @@ body {
 
 .timeline {
     position: relative;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 4rem auto 0;
-    padding: 0 20px;
+    padding: 0;
 }
 
+/* Ligne centrale */
 .timeline::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%;
     width: 2px;
     background: linear-gradient(to bottom, var(--accent), transparent);
@@ -1121,24 +1148,45 @@ body {
 .timeline-item {
     position: relative;
     margin-bottom: 3rem;
-    padding-left: 3rem;
+    width: 50%;
 }
 
 .timeline-item:last-child {
     margin-bottom: 0;
 }
 
+/* Éléments à gauche */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 3rem;
+    text-align: right;
+}
+
+/* Éléments à droite */
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 3rem;
+    text-align: left;
+}
+
+/* Le point sur la ligne */
 .timeline-dot {
     position: absolute;
-    left: 15px;
-    /* (20px left of line) - (width 12px)/2 = 14px roughly */
-    top: 5px;
-    width: 12px;
-    height: 12px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background-color: var(--accent);
     box-shadow: 0 0 10px var(--accent-glow);
     z-index: 2;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -8px; /* Centré sur la ligne centrale */
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -8px;
 }
 
 .timeline-content {
@@ -1147,9 +1195,17 @@ body {
     padding: 1.5rem 2rem;
     border-radius: 8px;
     transition: transform 0.3s ease, border-color 0.3s ease;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
 }
 
-.timeline-content:hover {
+.timeline-item:nth-child(odd) .timeline-content:hover {
+    transform: translateX(-10px);
+    border-color: rgba(229, 9, 20, 0.3);
+}
+
+.timeline-item:nth-child(even) .timeline-content:hover {
     transform: translateX(10px);
     border-color: rgba(229, 9, 20, 0.3);
 }
