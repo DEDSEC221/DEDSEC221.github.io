@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayman Salman - Portfolio Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">AS.</a>
+
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#parcours">Parcours</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#wip">WIP</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header class="hero parallax" id="home">
+        <div class="hero-content">
+            <h1 class="typewriter-text" data-text="Ayman Salman">Ayman Salman</h1>
+            <p class="subtitle">Étudiant en Informatique & Développeur</p>
+            <a href="#projects" class="cta-button">Voir mes projets</a>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about">
+                <div class="mouse"></div>
+            </a>
+        </div>
+    </header>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">À Propos & Compétences</h2>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="about-paragraphs">
+                        <p>Je crois que la technologie prend tout son sens lorsqu’elle est simple, utile et pensée avec
+                            précision.</p>
+                        <p>Étudiant en développement informatique, je conçois des applications et des expériences
+                            numériques où la performance, la clarté et l’attention aux détails occupent une place
+                            essentielle. J’aborde chaque projet avec la volonté de créer des solutions qui ne se
+                            contentent pas de fonctionner, mais qui offrent une véritable valeur à leurs utilisateurs.
+                        </p>
+                        <p>Mon parcours m’a permis de développer des compétences en Python, C, C++, PHP, JavaScript,
+                            HTML, CSS et MySQL, tout en explorant des domaines tels que le développement web, le
+                            développement logiciel et la cybersécurité. Chaque nouvelle technologie représente pour moi
+                            une occasion d’apprendre, de progresser et de repousser mes limites.</p>
+                        <p>En dehors du code, la discipline acquise grâce à la calisthénie, à la boxe et à la
+                            musculation nourrit ma façon de travailler : rester patient, viser l’excellence et ne jamais
+                            cesser de m’améliorer.</p>
+                        <p>Je ne cherche pas simplement à écrire du code.<br>Je cherche à concevoir des produits qui
+                            comptent.<br><strong style="color: var(--accent);">Simple. Élégant. Fonctionnel.</strong>
+                        </p>
+                    </div>
+
+                    <div class="learning-badge">
+                        <span class="pulse-dot"></span> En cours d'apprentissage : Javascript
+                    </div>
+                </div>
+
+                <div class="skills">
+                    <div class="skill">
+                        <span class="skill-name">C</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="--fill: 85%;"></div>
+                        </div>
+                        <div class="skill">
+                            <span class="skill-name">C++</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="--fill: 70%;"></div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">PHP</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 40%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">HTML</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">CSS</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Python</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 65%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">Java</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">MySQL</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <span class="skill-name">C#</span>
+                                <div class="progress-bar">
+                                    <div class="progress" style="--fill: 50%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="setup-gear">
+                <h3 class="setup-title">Mon Setup / Gear</h3>
+                <div class="setup-card">
+                    <div class="setup-icon">💻</div>
+                    <div class="setup-details">
+                        <span class="setup-label">Machine Principale</span>
+                        <span class="setup-value">HP Omen 16</span>
+                        <p class="setup-desc">Optimisé pour le développement intensif et le gaming.</p>
+                        <div class="setup-specs">
+                            <span class="spec-badge">Intel Core i7-14700HX</span>
+                            <span class="spec-badge">NVIDIA RTX 4050</span>
+                            <span class="spec-badge">16 Go RAM DDR5</span>
+                            <span class="spec-badge">1 To SSD NVMe</span>
+                            <span class="spec-badge">Écran 16.1" 165Hz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="timeline-section" id="parcours">
+        <div class="container">
+            <h2 class="section-title">Mon Parcours</h2>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2026</span>
+                        <h3 class="timeline-title">Deuxième Année - Sup'info</h3>
+                        <p>Poursuite du cycle d'ingénierie en développement informatique. Approfondissement des architectures systèmes, du développement logiciel avancé et réalisation de projets concrets.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2025</span>
+                        <h3 class="timeline-title">Première Année - Sup'info</h3>
+                        <p>Début du cursus universitaire. Acquisition des bases solides en algorithmique, structure de données et découverte de la programmation orientée objet (C, C++, Java, Python).</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024</span>
+                        <h3 class="timeline-title">Obtention du Baccalauréat</h3>
+                        <p>Fin du cycle secondaire au lycée et choix décisif de s'orienter pleinement vers le domaine des nouvelles technologies et de la création de logiciels.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projets Réalisés</h2>
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <div class="card-image-container">
+                        <div class="card-image project-1"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>AynoTech</h3>
+                        <p>Maquette de site e-commerce avec une interface intuitive et responsive .</p>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                        </div>
+                        <a href="#modal-1" class="btn-details">Détails</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="card-image-container">
+                        <div class="card-image project-2"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>SmartFact</h3>
+                        <p>Application logicielle de bureau robuste pour la gestion de facturation.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">CustomTkinter</span>
+                        </div>
+                        <a href="#modal-2" class="btn-details">Détails</a>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="card-image-container">
+                        <div class="card-image project-3"></div>
+                    </div>
+                    <div class="card-content">
+                        <h3>Univ Portal</h3>
+                        <p>Portail universitaire conçu pour centraliser les ressources étudiantes et académiques.</p>
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                        <a href="#modal-3" class="btn-details">Détails</a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="wip" id="wip">
+        <div class="container">
+            <h2 class="section-title">Work in Progress</h2>
+            <div class="wip-grid">
+                <div class="wip-card">
+                    <div class="wip-badge"> En développement</div>
+                    <h3>Planificateur de cours automatisé</h3>
+                    <p>Système intelligent pour l'organisation automatique de ses révisions et le suivi de complétion
+                        des modules académiques.</p>
+                </div>
+                <div class="wip-card">
+                    <div class="wip-badge"> En développement</div>
+                    <h3>Plateforme d'apprentissage interactive</h3>
+                    <p>Interface avancée avec vue scindée, intégrant un éditeur de code et un suivi de progression en
+                        temps réel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Me Contacter</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Discutons de votre prochain projet !</h3>
+                    <p>Je suis actuellement à la recherche de nouvelles opportunités. Que ce soit pour un projet, une
+                        question ou simplement pour échanger, n'hésitez pas à m'envoyer un message.</p>
+                    <a href="mailto:salmanayman38@gmail.com" class="contact-email">ayman.salman@email.com</a>
+                </div>
+                <form class="contact-form" action="#" method="POST"
+                    onsubmit="event.preventDefault(); alert('Ce formulaire est une démonstration CSS pure.');">
+                    <div class="form-group">
+                        <input type="text" placeholder="Votre Nom" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Votre Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Votre Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="location">
+                <p>📍 Dakar, Sénégal</p>
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link">GitHub</a>
+                <a href="https://wa.me/221769690860" class="social-link">WhatsApp</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Ayman Salman. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="modal-1">
+        <div class="modal-content">
+            <a href="#projects" class="modal-close">&times;</a>
+            <h3>AynoTech</h3>
+            <p>Ce projet de maquette e-commerce met en avant mes compétences en intégration pure. Il inclut un design
+                system complet, des galeries produits réactives, et des animations CSS fluides pour une expérience
+                utilisateur premium, le tout sans aucun framework.</p>
+            <div class="modal-actions">
+                <a href="#projects" class="btn-close-modal">Fermer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-2">
+        <div class="modal-content">
+            <a href="#projects" class="modal-close">&times;</a>
+            <h3>SmartFact</h3>
+            <p>SmartFact est un outil de productivité conçu en Python avec CustomTkinter. Il permet la création, la
+                gestion et l'exportation de factures via une interface graphique sombre et moderne, s'éloignant des
+                designs austères habituels des logiciels de gestion.</p>
+            <div class="modal-actions">
+                <a href="#projects" class="btn-close-modal">Fermer</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-3">
+        <div class="modal-content">
+            <a href="#projects" class="modal-close">&times;</a>
+            <h3>Univ Portal</h3>
+            <p>Univ Portal est une plateforme éducative centralisée développée pour faciliter l'accès aux ressources
+                académiques. Le portail permet une navigation intuitive entre les différents modules étudiants, en
+                mettant l'accent sur l'ergonomie, l'accessibilité et une expérience utilisateur fluide sur tous les
+                supports.</p>
+            <div class="modal-actions">
+                <a href="https://univ-portal.infinityfree.me/login" class="btn-close-modal">Visiter le site</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
